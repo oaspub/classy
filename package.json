@@ -17,7 +17,8 @@
     "build": "rimraf dist && tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@sinclair/typebox": "^0.24.1",
