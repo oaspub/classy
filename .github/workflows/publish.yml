@@ -1,4 +1,8 @@
-on: push
+on:
+  push:
+    branches: [main]
+
+concurrency: publish-${{ github.ref }}
 
 jobs:
   publish:
