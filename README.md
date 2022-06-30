@@ -1,3 +1,5 @@
+[![.github/workflows/publish.yml](https://github.com/oaspub/classy/actions/workflows/publish.yml/badge.svg)](https://github.com/oaspub/classy/actions/workflows/publish.yml)
+
 # Classy OpenAPI Specification
 
 Classes that implement the OpenAPI specification (v3) with functional programming utilities including validations built
