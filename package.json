@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oaspub/scutum.git"
+    "url": "git+https://github.com/oaspub/classy.git"
   },
   "keywords": [
     "oaspub",
@@ -54,9 +54,9 @@
   "author": "Spencer Tuft <stuft2@protonmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/oaspub/scutum/issues"
+    "url": "https://github.com/oaspub/classy/issues"
   },
-  "homepage": "https://github.com/oaspub/scutum#readme",
+  "homepage": "https://github.com/oaspub/classy#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }
