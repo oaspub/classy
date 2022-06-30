@@ -1,5 +1,5 @@
-import { Validator } from '../util/validator'
-import * as S from '../schemas'
+import * as S from '@oaspub/oaschemas/dist/schemas'
+import { Validator } from '@oaspub/oaschemas'
 import { Response } from './response'
 import { Parameter } from './parameter'
 import { TSchema } from '@sinclair/typebox'

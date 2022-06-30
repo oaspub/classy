@@ -1,6 +1,6 @@
+import * as S from '@oaspub/oaschemas/dist/schemas'
+import { Validator } from '@oaspub/oaschemas'
 import { TSchema } from '@sinclair/typebox'
-import * as S from '../schemas'
-import { Validator } from '../util/validator'
 import { Link } from './link'
 import { Header } from './header'
 import { MediaType } from './mediaType'

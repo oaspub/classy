@@ -1,7 +1,7 @@
-import * as S from '../schemas'
+import * as S from '@oaspub/oaschemas/dist/schemas'
+import { Validator } from '@oaspub/oaschemas'
 import { Contact } from './contact'
 import { License } from './license'
-import { Validator } from '../util/validator'
 import { Base } from './base'
 
 export class Info extends Base<typeof S.TInfo> implements S.Info {

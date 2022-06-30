@@ -1,6 +1,6 @@
-import * as S from '../schemas'
+import * as S from '@oaspub/oaschemas/dist/schemas'
+import { Validator } from '@oaspub/oaschemas'
 import { ExternalDocumentation } from './externalDocumentation'
-import { Validator } from '../util/validator'
 import { Base } from './base'
 
 export class Tag extends Base<typeof S.TTag> implements S.Tag {

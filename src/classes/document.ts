@@ -1,5 +1,5 @@
-import * as S from '../schemas'
-import { Validator } from '../util/validator'
+import * as S from '@oaspub/oaschemas/dist/schemas'
+import { Validator } from '@oaspub/oaschemas'
 import { Info } from './info'
 import { Server } from './server'
 import { PathItem } from './pathItem'
