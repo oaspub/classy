@@ -1,0 +1,63 @@
+{
+  "name": "@oaspub/classy",
+  "version": "0.0.0",
+  "description": "Classes that implement version 3 of the OpenAPI specification with functional programming utilities including validations built with AJV and Typebox",
+  "main": "dist/index.js",
+  "types": "types",
+  "directories": {
+    "test": "test",
+    "src": "src",
+    "dist": "dist"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.24.1",
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
+    "lodash.pickby": "^4.6.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "@types/jest": "^27.4.1",
+    "@types/lodash.pickby": "^4.6.7",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "better-ajv-errors": "^1.1.2",
+    "eslint": "^7.32.0",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oaspub/scutum.git"
+  },
+  "keywords": [
+    "oaspub",
+    "openapi",
+    "classes",
+    "schemas",
+    "validation"
+  ],
+  "author": "Spencer Tuft <stuft2@protonmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/oaspub/scutum/issues"
+  },
+  "homepage": "https://github.com/oaspub/scutum#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
