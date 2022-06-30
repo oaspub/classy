@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "declarationDir": "types",
+    "declaration": true,
     "experimentalDecorators": true
   },
   "include": ["src"]
