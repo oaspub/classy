@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { Response } from './response'
 import { Parameter } from './parameter'
@@ -51,10 +51,11 @@ export class Operation<
 
   $tag (item: Tag): this
   $tag (name: string): this
-  $tag (value: string | Tag): this {
-    if (this.tags == null) this.tags = []
-    this.tags.push(value instanceof Tag ? value.name : value)
-    return this
+  $tag (value: string | Tag): Operation<Parameters, ReqBody, Responses, Callbacks> {
+    const tags = []
+    if (this.tags != null) tags.push(...this.tags)
+    tags.push(value instanceof Tag ? value.name : value)
+    return new Operation({ ...this.json, tags })
   }
 
   $summary (summary: string): Operation<Parameters, ReqBody, Responses, Callbacks> {
@@ -101,8 +102,8 @@ export class Operation<
     return this.$parameter(name, 'cookie', { schema, ...data })
   }
 
-  $body<T extends TSchema> (schema: T, data?: Partial<S.RequestBody>): Operation<Parameters, RequestBody<T>, Responses, Callbacks> {
-    const requestBody = new RequestBody(schema, data)
+  $body<T extends TSchema> (...args: ConstructorParameters<typeof RequestBody>): Operation<Parameters, RequestBody<T>, Responses, Callbacks> {
+    const requestBody = new RequestBody(...args)
     return new Operation({ ...this.json(), requestBody })
   }
 

@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { ServerVariable } from './serverVariable'
 import { Base } from './base'
@@ -10,12 +10,11 @@ export class Server extends Base<typeof S.TServer> implements S.Server {
 
   constructor (data: S.Server)
   constructor (url: string, data?: Partial<S.Server>)
-  constructor (value: string | S.Server, data?: Partial<S.Server>) {
+  constructor (url: string | S.Server, data?: Partial<S.Server>) {
     super()
-    const server = { ...data }
-    if (typeof value === 'string') {
-      server.url = value
-    }
+    const server: S.Server = typeof url === 'string'
+      ? { ...data, url }
+      : url
     Object.assign(this, server)
   }
 
@@ -34,14 +33,14 @@ export class Server extends Base<typeof S.TServer> implements S.Server {
     return new Server({ ...this.json(), description })
   }
 
-  variable (name: string, data: S.ServerVariable): ServerVariable
-  variable (name: string, def: string, data?: Partial<S.ServerVariable>): ServerVariable
-  variable (name: string, value: string | S.ServerVariable, data?: Partial<S.ServerVariable>): ServerVariable {
-    const serverVariable = typeof value === 'string' ? new ServerVariable(value, data) : new ServerVariable(value)
-    if (this.variables == null) {
-      this.variables = {}
+  $variable (name: string, ...args: ConstructorParameters<typeof ServerVariable>): Server {
+    const server: S.Server = {
+      ...this.json(),
+      variables: {
+        ...this.variables,
+        [name]: new ServerVariable(...args)
+      }
     }
-    this.variables[name] = serverVariable
-    return serverVariable
+    return new Server(server)
   }
 }

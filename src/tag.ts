@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { ExternalDocumentation } from './externalDocumentation'
 import { Base } from './base'
@@ -16,7 +16,7 @@ export class Tag extends Base<typeof S.TTag> implements S.Tag {
     Object.assign(this, tag)
   }
 
-  static from (data: S.Tag): Tag {
+  static from (data: unknown): Tag {
     const parsed = Tag.validator.parse(data)
     return new Tag(parsed)
   }

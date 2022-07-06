@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { OauthFlow } from './oauthFlow'
 import { Base } from './base'

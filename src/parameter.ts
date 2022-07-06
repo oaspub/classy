@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { TSchema, Type } from '@sinclair/typebox'
 import { Example } from './example'
@@ -40,19 +40,19 @@ export class Parameter<T extends TSchema = any> extends Base<typeof S.TParameter
 
   static validator = new Validator(S.TParameter)
 
-  static query<T extends TSchema> (name: S.Parameter['name'], schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
+  static query<T extends TSchema> (name: string, schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
     return new Parameter(name, 'query', { ...data, ...schema != null && { schema } })
   }
 
-  static header<T extends TSchema> (name: S.Parameter['name'], schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
+  static header<T extends TSchema> (name: string, schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
     return new Parameter(name, 'header', { ...data, ...schema != null && { schema } })
   }
 
-  static path<T extends TSchema> (name: S.Parameter['name'], schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
+  static path<T extends TSchema> (name: string, schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
     return new Parameter(name, 'path', { ...data, ...schema != null && { schema } })
   }
 
-  static cookie<T extends TSchema> (name: S.Parameter['name'], schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
+  static cookie<T extends TSchema> (name: string, schema?: T, data?: Partial<S.Parameter>): Parameter<T> {
     return new Parameter(name, 'cookie', { ...data, ...schema != null && { schema } })
   }
 

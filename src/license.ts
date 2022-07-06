@@ -1,23 +1,20 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { Base } from './base'
 
 export class License extends Base<typeof S.TLicense> implements S.License {
-  name!: S.License['name']
-  identifier: S.License['identifier']
-  url: S.License['url']
+  name!: string
+  identifier?: string
+  url?: string
 
   constructor (data: S.License)
   constructor (name: string, data?: Partial<S.License>)
-  constructor (value: string | S.License, data?: Partial<S.License>) {
+  constructor (name: string | S.License, data?: Partial<S.License>) {
     super()
-    const license = typeof value === 'string'
-      ? {
-          ...data,
-          name: value
-        }
-      : value
-    Object.assign(license)
+    const license: S.License = typeof name === 'string'
+      ? { ...data, name }
+      : name
+    Object.assign(this, license)
   }
 
   static from (data: S.License): License {

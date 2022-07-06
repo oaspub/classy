@@ -1,10 +1,11 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { TSchema } from '@sinclair/typebox'
 import { Example } from './example'
 import { Encoding } from './encoding'
 import { Base } from './base'
 import { Header } from './header'
+import { isTSchema } from './util'
 
 export class MediaType<
   T extends TSchema = any,
@@ -16,10 +17,10 @@ export class MediaType<
   encoding?: Encodings
 
   constructor (data?: S.MediaType)
-  constructor (schema?: T, data?: S.MediaType) {
+  constructor (schema: T, data?: S.MediaType)
+  constructor (schema?: T | S.MediaType, data?: S.MediaType) {
     super()
-    const passedInAllData = schema != null && Object.hasOwnProperty.call(schema, 'schema')
-    const mediaType = !passedInAllData ? { ...data, schema } : schema
+    const mediaType = schema == null && !isTSchema(schema) ? { ...data, schema } : schema
     Object.assign(this, mediaType)
   }
 
@@ -39,7 +40,7 @@ export class MediaType<
 
   $example (name: string, ...args: ConstructorParameters<typeof Example>): MediaType<T, Encodings> {
     const examples = { ...this.examples, [name]: new Example(...args) }
-    return new MediaType(examples)
+    return new MediaType({ ...this.json(), examples })
   }
 
   $encoding<

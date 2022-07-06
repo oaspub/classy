@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { Server } from './server'
 import { Base } from './base'
@@ -26,14 +26,12 @@ export class Link<
 
   static validator = new Validator(S.TLink)
 
-  $operationRef (ref: string): this {
-    this.operationRef = ref
-    return this
+  $operationRef (operationRef: string): Link<Params, Body> {
+    return new Link({ ...this.json(), operationRef })
   }
 
-  $operationId (id: string): this {
-    this.operationId = id
-    return this
+  $operationId (operationId: string): Link<Params, Body> {
+    return new Link({ ...this.json(), operationId })
   }
 
   $parameter<N extends string, T> (name: N, expression: T): Link<Params & { [name in N]: T }, Body> {
@@ -45,9 +43,8 @@ export class Link<
     return new Link({ ...this.json(), requestBody })
   }
 
-  $description (text: string): this {
-    this.description = text
-    return this
+  $description (description: string): Link<Params, Body> {
+    return new Link({ ...this.json(), description })
   }
 
   $server (...args: ConstructorParameters<typeof Server>): Link<Params, Body> {

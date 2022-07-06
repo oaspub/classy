@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { Info } from './info'
 import { Server } from './server'
@@ -57,7 +57,7 @@ export class Document<
   static validator = new Validator(S.TDocument)
 
   $openapi (version: string): Document<Paths, Hooks, Comps> {
-    return new Document({ ...this.json(), version })
+    return new Document({ ...this.json(), openapi: version })
   }
 
   $info (...args: ConstructorParameters<typeof Info>): Document<Paths, Hooks, Comps> {

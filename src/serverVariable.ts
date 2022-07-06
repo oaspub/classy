@@ -1,4 +1,4 @@
-import * as S from '@oaspub/oaschemas/dist/schemas'
+import * as S from '@oaspub/oaschemas'
 import { Validator } from '@oaspub/oaschemas'
 import { Base } from './base'
 
@@ -9,12 +9,11 @@ export class ServerVariable extends Base<typeof S.TServerVariable> implements S.
 
   constructor (data: S.ServerVariable)
   constructor (def: string, data?: Partial<S.ServerVariable>)
-  constructor (value: string | S.ServerVariable, data?: Partial<S.ServerVariable>) {
+  constructor (def: string | S.ServerVariable, data?: Partial<S.ServerVariable>) {
     super()
-    const serverVariable = { ...data }
-    if (typeof value === 'string') {
-      serverVariable.default = value
-    }
+    const serverVariable = typeof def === 'string'
+      ? { ...data, default: def }
+      : def
     Object.assign(this, serverVariable)
   }
 
