@@ -1,6 +1,6 @@
 {
   "name": "@oaspub/classy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Classes that implement version 3 of the OpenAPI specification with functional programming utilities",
   "main": "dist/index.js",
   "directories": {
